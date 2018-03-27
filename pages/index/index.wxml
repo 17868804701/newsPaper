@@ -1,0 +1,70 @@
+<!--index.wxml-->
+<view class="container" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE">
+
+  <swiper current='{{verOrder}}' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:1200rpx;' bindchange='change'>
+    <block wx:for="{{imgList}}">
+      <swiper-item>
+         <view wx:for="{{areaItem}}" id='area' style='border:0rpx solid red;margin-left:{{(item.x1-30)*2}}rpx;position:fixed;width:{{(item.x3-item.x1)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x2-17)*2}}rpx;z-index:100' bindtap='jumpPageInfo'
+    hidden='{{item.verOrder!=verOrder+1}}'
+
+      data-title='{{item.title}}'
+      data-click='{{item.click}}'
+      data-liuDate='{{item.liuDate}}'
+      data-verOrder='{{item.verOrder}}' 
+      data-publishDate='{{item.publishDate}}' 
+      data-verName='{{item.verName}}' 
+      data-images='{{item.images}}' 
+      data-content='{{item.content}}' >
+  </view> 
+        <image src="{{item}}" class="slide-image" width="740" height="1200" style='width:750rpx;height:1200rpx;'/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- <image src='{{img}}' style='width:740rpx;height:1200rpx;border:0px solid red'></image> -->
+
+  
+  <view class='footer'>
+    <view class='img' bindtap='banci'>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <image src='../image/banben.png' class='banci_img' style='width: 40rpx;height: 40rpx;'></image>
+        <text class='banci_title'>版次</text>
+      </picker>
+    </view>
+    <view class='img' bindtap='mulu'>
+      <image src='../image/mulu.png'></image>
+      <text>目录</text>
+    </view>
+    <view class='img'>
+      <picker bindchange="bindTimeChange" value="{{index}}" range="{{timeList}}">
+        <image src='../image/data.png' class='wangqi_img'></image>
+        <text class='wangqi_title'>往期</text>
+      </picker>
+    </view>
+  </view>
+
+
+  <!-- 新闻列表弹框 -->
+  <view class='new_list' style='display:{{show}}'>
+    <view class='header'>
+      <text>第{{verOrder+1}}版新闻</text>
+    </view>
+    <scroll-view scroll-y style="height:800rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view class='listItem' wx:for="{{resault}}" bindtap='jumpPageInfo' 
+
+
+      data-title='{{item.title}}'
+      data-click='{{item.click}}'
+      data-liuDate='{{item.liuDate}}'
+      data-verOrder='{{item.verOrder}}' 
+      data-publishDate='{{item.publishDate}}' 
+      data-verName='{{item.verName}}' 
+      data-images='{{item.images}}' 
+      data-content='{{item.content}}' 
+      
+      
+      hidden='{{item.verOrder!=verOrder+1}}'>
+        <text>{{item.title}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>
