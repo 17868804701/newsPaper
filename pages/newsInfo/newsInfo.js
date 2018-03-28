@@ -15,15 +15,22 @@ Page({
   onLoad: function (options) {
     console.log(options);
     console.log(getApp().data.content);
+    console.log(getApp().data.imageList) 
+    console.log(getApp().data.newTime.replace(/-/g, "")) 
+    var imgUrl = "sxrb/" + getApp().data.newTime.replace(/-/g, "");
+    console.log(imgUrl)
     this.setData({
       click: options.click,
       images: options.images,
       liudate: options.liudate,
       vername: options.vername,
       title:options.title,
-      verorder: options.verorder
+      verorder: options.verorder,
+      imgList: getApp().data.imageList,
+      length: getApp().data.imageList.length,
+      imgUrl: imgUrl
     })
-
+    console.log(getApp().data.imageList.length)
     var article = getApp().data.content.replace(/\r\n/g, "<br>&nbsp;&nbsp;");
     /**
     * WxParse.wxParse(bindName , type, data, target,imagePadding)

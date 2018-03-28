@@ -14,9 +14,9 @@ Page({
     indicatorDots: false,
     autoplay: false,
     interval: 500,
-    duration: 50,
+    duration: 10,
     verOrder: 0,
-    timeList: ["2018-03-06"]
+    timeList: []
   },
 
   selectImg: function () {
@@ -86,9 +86,6 @@ Page({
         that.setData({
           areaItem: newArr
         })
-
-
-
         that.setData({
           img: res.data[0].perVerImgUrl,
           resault: res.data
@@ -169,6 +166,7 @@ Page({
     var liudate = e.currentTarget.dataset.liudate
     var vername = e.currentTarget.dataset.vername
 
+    getApp().data.imageList = e.currentTarget.dataset.images
     getApp().data.content = e.currentTarget.dataset.content
     wx.navigateTo({
       url: '../newsInfo/newsInfo?click=' + click + '&&title=' + title + '&&verorder=' + verorder + '&&images=' + images + '&&liudate=' + liudate + '&&vername=' + vername,
@@ -192,6 +190,9 @@ Page({
     getApp().data.newTime = this.data.timeList[e.detail.value]
     this.selectImg();
     this.selectInfo();
+    this.setData({
+      verOrder: 0
+    })
   },
   onShow: function () {
     wx.clearStorage()
@@ -200,6 +201,32 @@ Page({
       url: getApp().data.url
     })
     console.log(getApp().data.url, "全局路径")
+    var that = this;
+    // 查出时间列表
+    wx.request({
+      url: `${getApp().data.url}tbpaper.do?epaper=homePaperDate`,
+      method: 'POST',
+      data: {
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        console.log(res.data,"获取时间列表");
+        that.setData({
+          timeList:res.data
+        })
+
+      }
+      ,
+      fail: function (err) {
+
+      },
+      complete: function (data) {
+
+      }
+    })
+
   },
   // 左右滑动
   change: function (e) {

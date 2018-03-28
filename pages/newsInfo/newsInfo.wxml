@@ -1,4 +1,3 @@
-
 <view>
   <view class='header'>
     {{title}}
@@ -8,10 +7,9 @@
     <text>{{vername}}</text>
     <text>浏览次数：{{click}}</text>
   </view>
-
   <view class='content'>
-    <view class='imgList' hidden='{{show==-1}}'>
-      <image wx:for="{{imgList}}" src='https://xcx.joyhua.cn/{{floder}}/html/{{item}}'></image>
+    <view class='imgList' hidden='{{length==1}}'>
+       <image wx:for="{{imgList}}" src='https://xcx.joyhua.cn/{{imgUrl}}/{{item}}'></image> 
     </view>
     <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>

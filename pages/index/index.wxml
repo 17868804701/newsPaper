@@ -13,10 +13,10 @@
       data-verOrder='{{item.verOrder}}' 
       data-publishDate='{{item.publishDate}}' 
       data-verName='{{item.verName}}' 
-      data-images='{{item.images}}' 
+      data-images='{{item.liuList}}' 
       data-content='{{item.content}}' >
   </view> 
-        <image src="{{item}}" class="slide-image" width="740" height="1200" style='width:750rpx;height:1200rpx;'/>
+        <image src="{{item}}" class="slide-image" style='width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:5rpx;'/>
       </swiper-item>
     </block>
   </swiper>
@@ -48,7 +48,7 @@
     <view class='header'>
       <text>第{{verOrder+1}}版新闻</text>
     </view>
-    <scroll-view scroll-y style="height:800rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <scroll-view scroll-y style="height:auto;margin-bottom:20rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <view class='listItem' wx:for="{{resault}}" bindtap='jumpPageInfo' 
 
 
@@ -58,7 +58,7 @@
       data-verOrder='{{item.verOrder}}' 
       data-publishDate='{{item.publishDate}}' 
       data-verName='{{item.verName}}' 
-      data-images='{{item.images}}' 
+      data-images='{{item.liuList}}' 
       data-content='{{item.content}}' 
       
       
