@@ -215,7 +215,7 @@ Page({
         that.setData({
           timeList:res.data
         })
-
+        // that.onLoad();
       }
       ,
       fail: function (err) {

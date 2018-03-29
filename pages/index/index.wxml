@@ -4,7 +4,7 @@
   <swiper current='{{verOrder}}' circular='true' indicator-dots="{{indicatorDots}}" duration="{{duration}}" style='height:1200rpx;' bindchange='change'>
     <block wx:for="{{imgList}}">
       <swiper-item>
-         <view wx:for="{{areaItem}}" id='area' style='border:0rpx solid red;margin-left:{{(item.x1-50)*2}}rpx;position:fixed;width:{{(item.x3-item.x1)*2}}rpx;height:{{(item.x6-item.x4-10)*2}}rpx;top:{{(item.x2-20)*2}}rpx;z-index:100' bindtap='jumpPageInfo'
+         <view wx:for="{{areaItem}}" id='area' style='border:0rpx solid red;left:{{(item.x1-40)*2}}rpx;position:fixed;width:{{(item.x3-item.x1)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x4-20)*2}}rpx;z-index:100' bindtap='jumpPageInfo'
     hidden='{{item.verOrder!=verOrder+1}}'
 
       data-title='{{item.title}}'
