@@ -27,10 +27,10 @@ Page({
       title:options.title,
       verorder: options.verorder,
       imgList: getApp().data.imageList,
-      length: getApp().data.imageList.length,
+      // length: getApp().data.imageList.length,
       imgUrl: imgUrl
     })
-    console.log(getApp().data.imageList.length,"图片数组长度")
+    // console.log(getApp().data.imageList.length,"图片数组长度")
     var article = getApp().data.content.replace(/\r\n/g, "<br>&nbsp;&nbsp;");
     /**
     * WxParse.wxParse(bindName , type, data, target,imagePadding)

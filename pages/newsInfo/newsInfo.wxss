@@ -35,13 +35,15 @@
   margin-top: 30rpx;
   text-indent: 60rpx;
   line-height: 60rpx;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column
 }
 
 .imgList {
-  /* height: 400rpx; */
-  width: 90%;
-  margin-left: 5%;
-  /* border: 1px solid red; */
+   /* height: 400rpx;  */
+   /* width: 90%;  */
+   border: 0px solid red; 
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -49,4 +51,8 @@
 }
 image{
   margin-bottom: 22rpx;
+}
+text{
+  height: 0;
+  width: 0;
 }

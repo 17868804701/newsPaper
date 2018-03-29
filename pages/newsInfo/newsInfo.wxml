@@ -8,7 +8,7 @@
     <text>浏览次数：{{click}}</text>
   </view>
   <view class='content'>
-    <view class='imgList' hidden='{{length==1}}'>
+    <view class='imgList' hidden='{{imgList==undefined}}'>
        <image wx:for="{{imgList}}" src='https://xcx.joyhua.cn/{{imgUrl}}/{{item}}'></image> 
     </view>
     <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
