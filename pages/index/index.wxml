@@ -1,7 +1,7 @@
 <!--index.wxml-->
-<view class="container" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE">
+<view class="container">
 
-  <swiper current='{{verOrder}}' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:1200rpx;' bindchange='change'>
+  <swiper current='{{verOrder}}' circular='true' indicator-dots="{{indicatorDots}}" duration="{{duration}}" style='height:1200rpx;' bindchange='change'>
     <block wx:for="{{imgList}}">
       <swiper-item>
          <view wx:for="{{areaItem}}" id='area' style='border:0rpx solid red;margin-left:{{(item.x1-30)*2}}rpx;position:fixed;width:{{(item.x3-item.x1)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x2-17)*2}}rpx;z-index:100' bindtap='jumpPageInfo'
@@ -16,7 +16,7 @@
       data-images='{{item.liuList}}' 
       data-content='{{item.content}}' >
   </view> 
-        <image src="{{item}}" class="slide-image" style='width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:5rpx;'/>
+        <image src="{{item}}" class="slide-image" style='width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:10rpx;'/>
       </swiper-item>
     </block>
   </swiper>
@@ -49,9 +49,7 @@
       <text>第{{verOrder+1}}版新闻</text>
     </view>
     <scroll-view scroll-y style="height:auto;margin-bottom:20rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view class='listItem' wx:for="{{resault}}" bindtap='jumpPageInfo' 
-
-
+      <view style='background:white' class='listItem' wx:for="{{resault}}" bindtap='jumpPageInfo' 
       data-title='{{item.title}}'
       data-click='{{item.click}}'
       data-liuDate='{{item.liuDate}}'
@@ -60,8 +58,6 @@
       data-verName='{{item.verName}}' 
       data-images='{{item.liuList}}' 
       data-content='{{item.content}}' 
-      
-      
       hidden='{{item.verOrder!=verOrder+1}}'>
         <text>{{item.title}}</text>
       </view>

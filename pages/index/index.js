@@ -12,9 +12,8 @@ Page({
     index: "0",
     select: "",
     indicatorDots: false,
-    autoplay: false,
-    interval: 500,
-    duration: 10,
+    interval: 0,
+    duration: 0,
     verOrder: 0,
     timeList: []
   },
@@ -230,10 +229,12 @@ Page({
   },
   // 左右滑动
   change: function (e) {
-    console.log(e.detail.current);
-    this.setData({
-      verOrder: e.detail.current
-    })
+    console.log(e);
+    if(e.detail.source=='touch'){
+      this.setData({
+        verOrder: e.detail.current
+      })
+    }
   }
 })
 

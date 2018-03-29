@@ -118,5 +118,7 @@ page {
   position: absolute;
   top: 50rpx;
   z-index: 222;
-  background: white;
+  height: 1030rpx;
+  border-bottom: 0px solid red;
+  background: none;
 }
