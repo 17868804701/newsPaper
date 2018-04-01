@@ -15,9 +15,9 @@ Page({
     interval: 0,
     duration: 0,
     verOrder: 0,
-    timeList: []
+    timeList: [],
+    coverShow:"none"
   },
-
   selectImg: function () {
     // 查出所有版面图
     var that = this;
@@ -31,17 +31,22 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
-        console.log(res.data);
+
+        console.log(res,"结果");
         res.data.forEach(function (item) {
           that.data.imgList.push(item.perVerImgUrl)
         })
         var imgList = that.data.imgList.filter(function (element, index, self) {
           return self.indexOf(element) === index;
         });
+        // wx.showLoading({
+        //   title: '加载中',
+        //   duration: 2500
+        // })
         that.setData({
           imgList: imgList
         })
-        console.log(that.data.imgList)
+        console.log(that.data.imgList, "图片列表")
       }
       ,
       fail: function (err) {
@@ -147,32 +152,31 @@ Page({
   mulu: function () {
     if (this.data.show == 'none') {
       this.setData({
-        show: ''
+        show: '',
+        coverShow:""
       })
     } else {
       this.setData({
-        show: 'none'
+        show: 'none',
+        coverShow:"none"
       })
     }
   },
   jumpPageInfo: function (e) {
     console.log(e)
-    var click = e.currentTarget.dataset.click
-    var title = e.currentTarget.dataset.title
-    var verorder = e.currentTarget.dataset.verorder
-
-    var images = e.currentTarget.dataset.images
-    var liudate = e.currentTarget.dataset.liudate
-    var vername = e.currentTarget.dataset.vername
-
     getApp().data.imageList = e.currentTarget.dataset.images
     getApp().data.content = e.currentTarget.dataset.content
-    wx.navigateTo({
-      url: '../newsInfo/newsInfo?click=' + click + '&&title=' + title + '&&verorder=' + verorder + '&&images=' + images + '&&liudate=' + liudate + '&&vername=' + vername,
-    })
+    // wx.navigateTo({
+    //   url: '../newsInfo/newsInfo?click=' + click + '&&title=' + title + '&&verorder=' + verorder + '&&images=' + images + '&&liudate=' + liudate + '&&vername=' + vername + '&&title1=' + title1 + '&&leadTitle=' + leadTitle,
+    // })
   },
   // 3、点击版次
   bindPickerChange: function (e) {
+    this.setData({
+      show: 'none',
+      coverShow: "none"
+    })
+    console.log("取消弹框框")
     console.log(e)
     console.log('picker发送选择改变，携带值为', this.data.array[e.detail.value].substring(0, 2))
     var verOrder = parseInt(this.data.array[e.detail.value].substring(0, 2) - 1);
@@ -181,22 +185,41 @@ Page({
     })
     console.log(this.data.verOrder)
   },
-
+  // 点击遮罩层去掉目录
+  exit:function(){
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        show: 'none',
+        coverShow: "none"
+      })
+    }, 500)
+  },
 //选择时间
   bindTimeChange: function (e) {
+    var that = this;
+    setTimeout(function(){
+      that.setData({
+        show: 'none',
+        coverShow: "none"
+      })
+    },3000)
+
     console.log(e)
     console.log('picker发送选择改变，携带值为', this.data.timeList[e.detail.value])
     getApp().data.newTime = this.data.timeList[e.detail.value]
     this.selectImg();
     this.selectInfo();
     this.setData({
-      verOrder: 0
+      verOrder: 0,
+      imgList:[],
     })
   },
   onShow: function () {
-    wx.clearStorage()
+    // wx.clearStorage()
     this.setData({
       show: 'none',
+      coverShow:"none",
       url: getApp().data.url
     })
     console.log(getApp().data.url, "全局路径")
@@ -225,7 +248,6 @@ Page({
 
       }
     })
-
   },
   // 左右滑动
   change: function (e) {
@@ -234,6 +256,14 @@ Page({
       this.setData({
         verOrder: e.detail.current
       })
+    }
+  },
+  imgLoad:function(e){
+    wx.showLoading({
+      title: '加载中',
+    })
+    if (e){
+    wx.hideLoading(); 
     }
   }
 })

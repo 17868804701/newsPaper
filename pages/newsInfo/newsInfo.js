@@ -20,11 +20,12 @@ Page({
     var imgUrl = "sxrb/" + getApp().data.newTime.replace(/-/g, "");
     console.log(imgUrl)
     this.setData({
-      click: options.click,
       images: options.images,
-      liudate: options.liudate,
-      vername: options.vername,
+      liudate: options.liuDate,
+      vername: options.verName,
       title:options.title,
+      title1: options.title1,
+      leadTitle: options.leadTitle,
       verorder: options.verorder,
       imgList: getApp().data.imageList,
       // length: getApp().data.imageList.length,

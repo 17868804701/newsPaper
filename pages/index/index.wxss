@@ -105,20 +105,20 @@ page {
   border-bottom: 1px solid #e6e6e6;
    overflow: hidden; white-space: nowrap; 
    text-overflow:ellipsis;
-
-  
+   background: white;
 }
-
+.listItem:active{
+  background: white;
+}
 .listItem text {
   margin-left: 30rpx;
 }
-
 .new_list {
-  width: 100%;
+  width: 85%;
   position: absolute;
+  margin-left: 7.5%;
   top: 50rpx;
   z-index: 222;
   height: 1030rpx;
   border-bottom: 0px solid red;
-  background: none;
 }

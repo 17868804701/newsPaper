@@ -1,11 +1,25 @@
 /* pages/newsInfo/newsInfo.wxss */
 @import "../wxParse/wxParse.wxss";
 
-.header {
+.header2 {
   width: 95%;
   margin-left: 2.5%;
   margin-top: 20rpx;
-  font-size: 33rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.header1 {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 20rpx;
+  font-size:33rpx;
+  font-weight: bold;
+}
+.header3 {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 20rpx;
+  font-size: 30rpx;
   font-weight: bold;
 }
 .title {

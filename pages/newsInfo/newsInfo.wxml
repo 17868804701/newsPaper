@@ -1,15 +1,21 @@
 <view>
-  <view class='header'>
+  <view class='header1' hidden='{{leadTitle==""}}'>
+    {{leadTitle}}
+  </view>
+  <view class='header2'>
     {{title}}
+  </view>
+    <view class='header3'hidden='{{title1==""}}'>
+    {{title1}}
   </view>
   <view class='title'>
     <text>{{liudate}}</text>
     <text>{{vername}}</text>
-    <text>浏览次数：{{click}}</text>
+    <!-- <text>浏览次数：{{click}}</text> -->
   </view>
   <view class='content'>
     <view class='imgList' hidden='{{imgList==undefined}}'>
-       <image wx:for="{{imgList}}" src='https://xcx.joyhua.cn/{{imgUrl}}/{{item}}'></image> 
+       <image lazy-load="true" wx:for="{{imgList}}" src='https://xcx.joyhua.cn/{{imgUrl}}/{{item}}'></image> 
     </view>
     <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>

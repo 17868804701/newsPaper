@@ -1,36 +1,29 @@
 <!--index.wxml-->
 <view class="container">
-
   <swiper current='{{verOrder}}' circular='true' indicator-dots="{{indicatorDots}}" duration="{{duration}}" style='height:1200rpx;' bindchange='change'>
-    <block wx:for="{{imgList}}">
-      <swiper-item>
-         <view wx:for="{{areaItem}}" id='area' style='border:0rpx solid red;left:{{(item.x1-40)*2}}rpx;position:fixed;width:{{(item.x3-item.x1)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x4-20)*2}}rpx;z-index:100' bindtap='jumpPageInfo'
-    hidden='{{item.verOrder!=verOrder+1}}'
-
-      data-title='{{item.title}}'
-      data-click='{{item.click}}'
-      data-liuDate='{{item.liuDate}}'
-      data-verOrder='{{item.verOrder}}' 
-      data-publishDate='{{item.publishDate}}' 
-      data-verName='{{item.verName}}' 
-      data-images='{{item.liuList}}' 
-      data-content='{{item.content}}' >
-  </view> 
-        <image src="{{item}}" class="slide-image" style='width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:10rpx;'/>
+      <swiper-item wx:for="{{imgList}}"> 
+        <image bindload="imgLoad" src="{{item}}" style='width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:10rpx;' />
+        <navigator wx:for="{{areaItem}}" 
+         url='../newsInfo/newsInfo?title={{item.title}}&liuDate={{item.liuDate}}&verOrder={{item.verOrder}}&verName={{item.verName}}&leadTitle={{item.leadTitle}}&title1={{item.title1}}'>
+        <view id='area' style='border:0rpx solid red;left:{{(item.x1-40)*2}}rpx;position:fixed;width:{{(item.x3-item.x1)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x4-20)*2}}rpx;z-index:100' bindtap='jumpPageInfo' hidden='{{item.verOrder!=verOrder+1}}'
+             data-content='{{item.content}}'
+             data-images='{{item.liuList}}'
+               >
+        </view>
+      </navigator>
       </swiper-item>
-    </block>
   </swiper>
   <!-- <image src='{{img}}' style='width:740rpx;height:1200rpx;border:0px solid red'></image> -->
-
-  
-  <view class='footer'>
-    <view class='img' bindtap='banci'>
+<!-- 遮罩 -->
+  <view style='width:750rpx;height:1200rpx;background:black;  position: absolute;display:{{coverShow}};opacity:0.4;' bindtap='exit'></view>
+  <view class='footer' bindtap='exit'>
+    <view class='img'>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
         <image src='../image/banben.png' class='banci_img' style='width: 40rpx;height: 40rpx;'></image>
         <text class='banci_title'>版次</text>
       </picker>
     </view>
-    <view class='img' bindtap='mulu'>
+    <view class='img' catchtap='mulu'>
       <image src='../image/mulu.png'></image>
       <text>目录</text>
     </view>
@@ -41,26 +34,21 @@
       </picker>
     </view>
   </view>
-
-
   <!-- 新闻列表弹框 -->
   <view class='new_list' style='display:{{show}}'>
     <view class='header'>
       <text>第{{verOrder+1}}版新闻</text>
     </view>
-    <scroll-view scroll-y style="height:auto;margin-bottom:20rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view style='background:white' class='listItem' wx:for="{{resault}}" bindtap='jumpPageInfo' 
-      data-title='{{item.title}}'
-      data-click='{{item.click}}'
-      data-liuDate='{{item.liuDate}}'
-      data-verOrder='{{item.verOrder}}' 
-      data-publishDate='{{item.publishDate}}' 
-      data-verName='{{item.verName}}' 
-      data-images='{{item.liuList}}' 
-      data-content='{{item.content}}' 
-      hidden='{{item.verOrder!=verOrder+1}}'>
+    <scroll-view scroll-y style="height:820rpx;margin-bottom:20rpx;background:white" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <navigator hover-class="none" wx:for="{{resault}}"
+         url='../newsInfo/newsInfo?title={{item.title}}&liuDate={{item.liuDate}}&verOrder={{item.verOrder}}&verName={{item.verName}}&leadTitle={{item.leadTitle}}&title1={{item.title1}}'>
+      <view style='background:white' class='listItem'  bindtap='jumpPageInfo'
+        data-images='{{item.liuList}}' 
+        data-content='{{item.content}}'
+        hidden='{{item.verOrder!=verOrder+1}}'>
         <text>{{item.title}}</text>
       </view>
+ </navigator>
     </scroll-view>
   </view>
 </view>
