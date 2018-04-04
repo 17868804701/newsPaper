@@ -28,6 +28,7 @@ Page({
       leadTitle: options.leadTitle,
       verorder: options.verorder,
       imgList: getApp().data.imageList,
+      miaoshuList: options.miaoshuList,
       // length: getApp().data.imageList.length,
       imgUrl: imgUrl
     })

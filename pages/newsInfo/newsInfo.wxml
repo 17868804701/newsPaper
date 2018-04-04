@@ -15,7 +15,10 @@
   </view>
   <view class='content'>
     <view class='imgList' hidden='{{imgList==undefined}}'>
-       <image lazy-load="true" wx:for="{{imgList}}" src='https://xcx.joyhua.cn/{{imgUrl}}/{{item}}'></image> 
+       <image lazy-load="true" wx:for="{{imgList}}" src='https://xcx.joyhua.cn/{{imgUrl}}/{{item}}'></image>
+    </view>
+    <view>
+     <text wx:for="{{miaoshuList}}" style=' font-weight: bold;'>{{item}}</text>  
     </view>
     <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>

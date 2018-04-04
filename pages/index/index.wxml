@@ -1,11 +1,17 @@
 <!--index.wxml-->
 <view class="container">
-  <swiper current='{{verOrder}}' circular='true' indicator-dots="{{indicatorDots}}" duration="{{duration}}" style='height:1200rpx;' bindchange='change'>
+  <swiper current='{{verOrder}}' circular='true' indicator-dots="{{indicatorDots}}" duration="{{duration}}" style='height:1180rpx;margin-top:10rpx;' bindchange='change'>
       <swiper-item wx:for="{{imgList}}"> 
-        <image bindload="imgLoad" src="{{item}}" style='width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:10rpx;' />
+        <image bindload="imgLoad" src="{{item}}" style='width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:10rpx;width:95%;margin-left:2.5%' />
         <navigator wx:for="{{areaItem}}" 
-         url='../newsInfo/newsInfo?title={{item.title}}&liuDate={{item.liuDate}}&verOrder={{item.verOrder}}&verName={{item.verName}}&leadTitle={{item.leadTitle}}&title1={{item.title1}}'>
-        <view id='area' style='border:0rpx solid red;left:{{(item.x1-40)*2}}rpx;position:fixed;width:{{(item.x3-item.x1)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x4-20)*2}}rpx;z-index:100' bindtap='jumpPageInfo' hidden='{{item.verOrder!=verOrder+1}}'
+         url='../newsInfo/newsInfo?title={{item.title}}&liuDate={{item.liuDate}}&verOrder={{item.verOrder}}&verName={{item.verName}}&leadTitle={{item.leadTitle}}&title1={{item.title1}}&miaoshuList={{item.miaoshuList}}'>
+
+        <!-- <view id='area' style='border:1rpx solid red;left:{{(item.x1-25)*2}}rpx;position:fixed;width:{{(item.x3-item.x1-5)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x4-20)*2}}rpx;z-index:100' bindtap='jumpPageInfo' hidden='{{item.verOrder!=verOrder+1}}'
+             data-content='{{item.content}}'
+             data-images='{{item.liuList}}'
+               > -->
+
+                     <view id='area' style='border:0rpx solid red;left:{{(item.x1-10)*1.8}}rpx;position:fixed;width:{{(item.x3-item.x1-25)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x4)*1.9}}rpx;z-index:100' bindtap='jumpPageInfo' hidden='{{item.verOrder!=verOrder+1}}'
              data-content='{{item.content}}'
              data-images='{{item.liuList}}'
                >
@@ -15,7 +21,7 @@
   </swiper>
   <!-- <image src='{{img}}' style='width:740rpx;height:1200rpx;border:0px solid red'></image> -->
 <!-- 遮罩 -->
-  <view style='width:750rpx;height:1200rpx;background:black;  position: absolute;display:{{coverShow}};opacity:0.4;' bindtap='exit'></view>
+  <view style='width:750rpx;height:1200rpx;background:black; position: absolute;display:{{coverShow}};opacity:0.4;' bindtap='exit'></view>
   <view class='footer' bindtap='exit'>
     <view class='img'>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
@@ -35,13 +41,13 @@
     </view>
   </view>
   <!-- 新闻列表弹框 -->
-  <view class='new_list' style='display:{{show}}'>
+  <view class='new_list' style='display:{{show}};height:900rpx;'>
     <view class='header'>
       <text>第{{verOrder+1}}版新闻</text>
     </view>
     <scroll-view scroll-y style="height:820rpx;margin-bottom:20rpx;background:white" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <navigator hover-class="none" wx:for="{{resault}}"
-         url='../newsInfo/newsInfo?title={{item.title}}&liuDate={{item.liuDate}}&verOrder={{item.verOrder}}&verName={{item.verName}}&leadTitle={{item.leadTitle}}&title1={{item.title1}}'>
+         url='../newsInfo/newsInfo?title={{item.title}}&liuDate={{item.liuDate}}&verOrder={{item.verOrder}}&verName={{item.verName}}&leadTitle={{item.leadTitle}}&title1={{item.title1}}&miaoshuList={{item.miaoshuList}}'>
       <view style='background:white' class='listItem'  bindtap='jumpPageInfo'
         data-images='{{item.liuList}}' 
         data-content='{{item.content}}'

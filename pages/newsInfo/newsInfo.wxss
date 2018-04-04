@@ -49,9 +49,6 @@
   margin-top: 30rpx;
   text-indent: 60rpx;
   line-height: 60rpx;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column
 }
 
 .imgList {
@@ -64,9 +61,10 @@
   align-items: center;
 }
 image{
-  margin-bottom: 22rpx;
+  margin-bottom:22rpx;
 }
-text{
-  height: 0;
-  width: 0;
+.WxEmojiView{
+  text-indent: 60rpx;
+  /* margin-top: -20rpx; */
+  display:inline-block;
 }

@@ -16,6 +16,7 @@ Page({
     duration: 0,
     verOrder: 0,
     timeList: [],
+    count:"",
     coverShow:"none"
   },
   selectImg: function () {
@@ -31,22 +32,22 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
-
         console.log(res,"结果");
         res.data.forEach(function (item) {
-          that.data.imgList.push(item.perVerImgUrl)
+          that.data.imgList.push(item.perVerImgUrl + item.verOrder)
         })
         var imgList = that.data.imgList.filter(function (element, index, self) {
           return self.indexOf(element) === index;
         });
-        // wx.showLoading({
-        //   title: '加载中',
-        //   duration: 2500
-        // })
-        that.setData({
-          imgList: imgList
+        var imgLists = []
+        imgList.forEach(function(item){
+          imgLists.push(item.substring(0,item.length-2))
         })
-        console.log(that.data.imgList, "图片列表")
+        that.setData({
+          imgList: imgLists
+        })
+     
+        console.log(that.data.imgList, "去重后图片列表")
       }
       ,
       fail: function (err) {
@@ -114,6 +115,9 @@ Page({
     })
   },
   onLoad: function () {
+    wx.showLoading({
+      title: '加载中',
+    })
     var that = this
     wx.getSystemInfo({
       success: function (res) {
@@ -187,21 +191,21 @@ Page({
   },
   // 点击遮罩层去掉目录
   exit:function(){
-    var that = this;
-    setTimeout(function () {
-      that.setData({
-        show: 'none',
-        coverShow: "none"
-      })
-    }, 500)
+    this.setData({
+      show: 'none',
+      coverShow: "none"
+    })
   },
 //选择时间
   bindTimeChange: function (e) {
     var that = this;
+    this.setData({
+      count:0
+    })
     setTimeout(function(){
       that.setData({
         show: 'none',
-        coverShow: "none"
+        coverShow: "none",
       })
     },3000)
 
@@ -217,9 +221,11 @@ Page({
   },
   onShow: function () {
     // wx.clearStorage()
+
     this.setData({
       show: 'none',
       coverShow:"none",
+      count:0,
       url: getApp().data.url
     })
     console.log(getApp().data.url, "全局路径")
@@ -259,10 +265,13 @@ Page({
     }
   },
   imgLoad:function(e){
+    var cuonts = this.data.count+1
+    console.log(cuonts,"加载次数")
+    console.log(e)
     wx.showLoading({
       title: '加载中',
     })
-    if (e){
+    if (this.data.count++ == this.data.imgList.length-1){
     wx.hideLoading(); 
     }
   }
