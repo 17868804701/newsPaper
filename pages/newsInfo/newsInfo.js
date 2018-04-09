@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+  size:30
   },
 
   /**
@@ -26,13 +26,26 @@ Page({
       title:options.title,
       title1: options.title1,
       leadTitle: options.leadTitle,
+      paperName:getApp().data.paperName,
       verorder: options.verorder,
       imgList: getApp().data.imageList,
       miaoshuList: options.miaoshuList,
       // length: getApp().data.imageList.length,
       imgUrl: imgUrl
     })
-    // console.log(getApp().data.imageList.length,"图片数组长度")
+    var list = []
+    if (this.data.imgList == undefined){
+
+    }else{
+      this.data.imgList.forEach(function (val) {
+        list.push(val.split('$$'))
+      })
+      console.log(list, "结果")
+      this.setData({
+        list: list
+      })
+    }
+ 
     var article = getApp().data.content.replace(/\r\n/g, "<br>&nbsp;&nbsp;");
     /**
     * WxParse.wxParse(bindName , type, data, target,imagePadding)
@@ -95,6 +108,16 @@ Page({
   
   },
 
-
-  
+  size:function(){
+    this.data.size = this.data.size+5 
+    this.setData({
+      size: this.data.size
+    })
+  },
+  xsize:function(){
+    this.data.size = this.data.size - 5 
+    this.setData({
+      size: this.data.size 
+    })
+  }
 })

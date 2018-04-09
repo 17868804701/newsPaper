@@ -137,9 +137,11 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         success: function (res) {
-          console.log(res.data[0]);
+          console.log(res);
           var newTime = res.data[0].liuDate
+          var paperName = res.data[0].paperName
           getApp().data.newTime = newTime
+          getApp().data.paperName = paperName
           that.selectImg();
           that.selectInfo();
         }
@@ -199,6 +201,7 @@ Page({
 //选择时间
   bindTimeChange: function (e) {
     var that = this;
+    this.imgLoad();
     this.setData({
       count:0
     })
