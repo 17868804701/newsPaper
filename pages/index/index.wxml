@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="container">
-  <swiper current='{{verOrder}}' circular='true' indicator-dots="{{indicatorDots}}" duration="{{duration}}" style='height:1180rpx;margin-top:10rpx;' bindchange='change'>
+  <swiper current='{{verOrder}}' circular='true' indicator-dots="{{indicatorDots}}" duration="{{duration}}" style='height:1175rpx;margin-top:13rpx;' bindchange='change'>
       <swiper-item wx:for="{{imgList}}"> 
-        <image bindload="imgLoad" src="{{item}}" style='width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:10rpx;width:95%;margin-left:2.5%' />
+        <image  bindload="imgLoad" src="{{item}}" style='position:fixed;width:740rpx;height:1190rpx;margin-left:5rpx;margin-top:10rpx;width:95%;margin-left:2.5%' />
         <navigator wx:for="{{areaItem}}" 
          url='../newsInfo/newsInfo?title={{item.title}}&liuDate={{item.liuDate}}&verOrder={{item.verOrder}}&verName={{item.verName}}&leadTitle={{item.leadTitle}}&title1={{item.title1}}&miaoshuList={{item.miaoshuList}}'>
 
