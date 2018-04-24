@@ -23,7 +23,7 @@ Page({
     // 查出所有版面图
     var that = this;
     wx.request({
-      url: `${getApp().data.url}tbpaper.do?epaper=homeSrc`,
+      url: `${getApp().data.url}smallroutine.do?epaper=homeSrc`,
       method: 'POST',
       data: {
         "Sj": getApp().data.newTime,
@@ -61,7 +61,7 @@ Page({
     var that = this;
     // 根据时间查出详情
     wx.request({
-      url: `${getApp().data.url}tbpaper.do?epaper=homeArticle`,
+      url: `${getApp().data.url}smallroutine.do?epaper=homeArticle`,
       method: 'POST',
       data: {
         "Sj": getApp().data.newTime,
@@ -129,7 +129,7 @@ Page({
     }),
       // 查出最新时间
       wx.request({
-        url: `${getApp().data.url}tbpaper.do?epaper=homePaper`,
+      url: `${getApp().data.url}smallroutine.do?epaper=homePaper`,
         method: 'POST',
         data: {
         },
@@ -137,7 +137,7 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         success: function (res) {
-          console.log(res);
+          console.log(res,"成功*****************************************");
           var newTime = res.data[0].liuDate
           var paperName = res.data[0].paperName
           getApp().data.newTime = newTime
@@ -147,10 +147,10 @@ Page({
         }
         ,
         fail: function (err) {
-
+  
         },
         complete: function (data) {
-
+  
         }
       })
 
@@ -235,7 +235,7 @@ Page({
     var that = this;
     // 查出时间列表
     wx.request({
-      url: `${getApp().data.url}tbpaper.do?epaper=homePaperDate`,
+      url: `${getApp().data.url}smallroutine.do?epaper=homePaperDate`,
       method: 'POST',
       data: {
       },
