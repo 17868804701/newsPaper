@@ -1,7 +1,8 @@
 //app.js
 App({
   data:{
-    url:'https://xcx.joyhua.cn/',
+    url: 'https://xcx.tcrbs.com/',
+    // url: 'https://xcx.joyhua.cn/',
     publishDate:'',
     folder:''
   },

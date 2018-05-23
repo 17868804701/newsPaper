@@ -11,7 +11,7 @@
              data-images='{{item.liuList}}'
                > -->
 
-                     <view id='area' style='border:0rpx solid red;left:{{(item.x1-10)*1.8}}rpx;position:fixed;width:{{(item.x3-item.x1-25)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x4)*1.9}}rpx;z-index:100' bindtap='jumpPageInfo' hidden='{{item.verOrder!=verOrder+1}}'
+                     <view id='area' style='border:0rpx solid red;left:{{(item.x1)*1.9}}rpx;position:fixed;width:{{(item.x3-item.x1)*2}}rpx;height:{{(item.x6-item.x4)*2}}rpx;top:{{(item.x4)*1.9}}rpx;z-index:100' bindtap='jumpPageInfo' hidden='{{item.verOrder!=verOrder+1}}'
              data-content='{{item.content}}'
              data-images='{{item.liuList}}'
                >

@@ -95,6 +95,7 @@ Page({
           img: res.data[0].perVerImgUrl,
           resault: res.data
         })
+        console.log(that.data.resault,'**********************************************')
         res.data.forEach(function (item) {
           that.data.array.push(item.verOrder + "-" + item.verName)
         })
@@ -184,8 +185,9 @@ Page({
     })
     console.log("取消弹框框")
     console.log(e)
-    console.log('picker发送选择改变，携带值为', this.data.array[e.detail.value].substring(0, 2))
-    var verOrder = parseInt(this.data.array[e.detail.value].substring(0, 2) - 1);
+    console.log('picker发送选择改变，携带值为', this.data.array[e.detail.value].substring(1, 3))
+    var verOrder = parseInt(this.data.array[e.detail.value].substring(1, 3) - 1);
+    console.log(verOrder)
     this.setData({
       verOrder: verOrder
     })

@@ -34,15 +34,31 @@ Page({
       imgUrl: imgUrl
     })
     var list = []
+    var new_list = []
+    var lists = []
+    console.log(this.data.imgList)
     if (this.data.imgList == undefined){
 
     }else{
       this.data.imgList.forEach(function (val) {
         list.push(val.split('$$'))
       })
-      console.log(list, "结果")
+      console.log(list, "结果");
+      list.forEach(function(item){
+        item.forEach(function(items){
+          lists.push(items.replace(/<br>/g, " "))
+          console.log(items)
+        })
+      })
+      console.log(lists,"新数组")
+      let result = [];
+      let size = 2;
+      for (let i = 0; i < lists.length;) {
+        result.push(lists.slice(i, i + size));
+        i += size;
+      }
       this.setData({
-        list: list
+        list: result
       })
     }
  
